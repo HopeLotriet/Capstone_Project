@@ -1,0 +1,154 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    background-color: #007BFF;
+            color: #FFF;
+            padding: 20px;
+            text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+/* Style the contact form section */
+#contact-form {
+    background-color: #FFF;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style form labels and inputs */
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Style the form submit button */
+button[type="submit"] {
+    background-color: #007BFF;
+    color: #FFF;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Style the contact information section */
+#contact-info {
+    background-color: #FFF;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the location map section */
+#location-map {
+    background-color: #FFF;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Hide potential iframe overflow */
+}
+
+
+/* Style the social media section */
+#social-media {
+    background-color: #FFF;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the office hours section */
+#office-hours {
+    background-color: #FFF;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the privacy statement section */
+#privacy-statement {
+    background-color: #FFF;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the footer */
+footer {
+    background-color: #007BFF;
+    color: #FFF;
+    padding: 10px 0;
+    text-align: center;
+}
+
+
+/* Add some styling to the navigation bar */
+nav {
+    background-color: #007BFF;
+    color: #FFF;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 1.2em;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #0056b3;
+}
+

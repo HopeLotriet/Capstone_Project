@@ -1,7 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     background-color: lightgray;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
+    background-image: url('/public/images\ \(2\).jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
 }
 
 header {
@@ -26,6 +36,14 @@ section {
     width: 200px;
     height: 200px;
     cursor: pointer;
+}
+
+/* Style the footer */
+footer {
+    background-color: #007BFF;
+    color: #FFF;
+    padding: 10px 0;
+    text-align: center;
 }
 
 nav {
@@ -68,8 +86,16 @@ ul.nav-list li a:hover {
     height: 100vh;
 }
 
-.background{
-    background-size: cover; 
-    background-repeat: no-repeat; 
-    background-position: center; 
+section {
+    margin-top: 20px;
+}
+
+.page {
+    text-align: center;
+}
+
+.page img {
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
 }

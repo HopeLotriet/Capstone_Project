@@ -1,0 +1,132 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set a background image for the body */
+body {
+    background-image: url('public/hexagons-pattern-background-genetic-research-molecular-structure-chemical-engineering-concept-innovation-technology-used-design-healthcare-science-medicine-background_322958-2209.avif');
+    background-size: cover;
+    background-position: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Style the header */
+header {
+    background-color: #007BFF;
+    color: #FFF;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Style the header h1 */
+h1 {
+    font-size: 2.5em;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a subtle text shadow */
+}
+
+/* Style the main content container */
+.about {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow */
+    border-radius: 10px;
+}
+
+/* Style section headings */
+h2 {
+    font-size: 1.5em;
+    color: #007BFF;
+    margin-bottom: 10px;
+}
+
+/* Style paragraphs in the main content */
+p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Style the contact information container */
+.info {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+/* Style the contact details */
+.info div {
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+/* Style links */
+a {
+    color: #007BFF;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Style the footer */
+footer {
+    background-color: #007BFF;
+    color: #FFF;
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* Add responsiveness for smaller screens */
+@media (max-width: 768px) {
+    .about,
+    .info {
+        padding: 10px;
+    }
+}
+
+
+/* Add some styling to the navigation bar */
+nav {
+    background-color: #007BFF;
+    color: #FFF;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 1.2em;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #0056b3;
+}
+
