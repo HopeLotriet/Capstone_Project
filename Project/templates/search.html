@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Molecular Property Prediction</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="search.js" defer></script>
+</head>
+<body>
+
+    <nav>
+        <ul class="nav-list">
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('search') }}">Search</a></li>
+            <li><a href="{{ url_for('about') }}">About Us</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main x-data="searchApp()">
+
+        <header>
+            <h1>DrugCheckMaster</h1>
+            <h2>Search</h2>
+        </header>
+    
+        <section class="search-section">
+            <input x-model="searchQuery" x-on:input="search()" type="text" placeholder="Enter your search query">
+        </section>
+    
+        <section class="results-section">
+            <h2>Search Results</h2>
+            <ul id="search-results">
+                <template x-for="result in searchResults" :key="result">
+                    <li x-text="result"></li>
+                </template>
+            </ul>
+        </section>
+    
+        <section class="pagination-section">
+            <div id="pagination">
+                <template x-for="page in totalPages" :key="page">
+                    <a href="#" x-text="page" x-on:click="changePage(page)"></a>
+                </template>
+            </div>
+        </section>
+
+
+    </main>
+
+   
+
+    <footer>
+        <p>&copy; 2023 DrugCheckMaster</p>
+    </footer>
+    
+</body>
+</html>

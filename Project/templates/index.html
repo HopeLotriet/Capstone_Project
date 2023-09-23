@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Molecular Property Prediction</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="/static/index.js" defer></script>
+
+</head>
+<body>
+    <nav>
+        <ul class="nav-list">
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('search') }}">Search</a></li>
+            <li><a href="{{ url_for('about') }}">About Us</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <hr>
+    <main>
+        <section class="middle">
+            <div class="background">
+                <header>
+                    <h1>Welcome to DrugCheckMaster</h1>
+                </header>
+                <section>
+                    <h3>For all your Chemistry needs!</h3>
+                </section>
+                <section>
+                    <div class="page">
+                        <a href="{{ url_for('search') }}">
+                            <img src="/static/public/clicking_finger.jpg" alt="Finger clicking button">
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 DrugCheckMaster</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Molecular Property Prediction</title>
+    <link rel="stylesheet" href="/static/about.css">
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="/static/index.js" defer></script>
+</head>
+
+<body>
+
+    <nav>
+        <ul class="nav-list">
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('search') }}">Search</a></li>
+            <li><a href="{{ url_for('about') }}">About Us</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <header>
+        <h1>DrugCheckMaster</h1>
+    </header>
+
+    <div class="about">
+        <h2>About Us</h2>
+        <p>Welcome to DrugCheckMaster, your trusted partner in molecular property prediction for the pharmaceutical
+            world.
+            Our mission is to revolutionize the drug discovery process by providing accurate and efficient predictions
+            of Lipinski properties,
+            ultimately contributing to the development of safer and more effective medications.</p>
+
+
+
+            <div class="mission">
+                <h2>Mission and Values</h2>
+                <p>
+                    At DrugCheckMaster, our purpose is clear: we exist to empower researchers, scientists, and pharmaceutical
+                    professionals with cutting-edge tools for predicting the Lipinski properties of drug candidates.
+                    Lipinski's Rule of Five is a critical framework in drug development, and our app aims to streamline and
+                    enhance this crucial step.
+                    By doing so, we hope to accelerate the drug discovery process, reduce costs, and improve the overall success
+                        rate of new drug candidates.</p>
+                
+            </div>
+        
+            <div class="history">
+                <h2>History</h2>
+                <p>Founded in 2023, DrugCheckMaster has emerged as a trailblazer in the field of molecular property prediction.
+                Our journey began when a group of passionate scientists and technologists came together to address the
+                        challenges faced by the pharmaceutical industry.
+                Recognizing the need for a reliable, user-friendly tool, we embarked on a mission to develop
+                        DrugCheckMaster.</p>
+            
+            </div>
+        
+            <div class="info">
+                <h2>Contact Information</h2>
+                <div>
+                    
+                    <p>Have questions or inquiries? We'd love to hear from you!</p>
+        
+                    <p>Email: contact@drugcheckmaster.com</p>
+                    <p>Phone: +27 81 888 1270</p>
+                    <p>Address: 69 Kingsway Ave, Auckland Park, Johannesburg, 2092, RSA</p>
+        
+                    <p>For more contact options and inquiries, please visit our <a href="{{ url_for('contact') }}">Contact Page.</a></p>
+                </div>
+            </div>
+        
+            <div>
+                <p>Thank you for joining us on our mission to revolutionize drug discovery.
+                Together, we're building a brighter and healthier future.</p>
+            </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 DrugCheckMaster</p>
+    </footer>
+
+
+</body>
+
+</html>
