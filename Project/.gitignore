@@ -1,0 +1,8 @@
+# Ignore Python virtual environment files
+.api/
+
+# Ignore Visual Studio Code settings (optional)
+.vscode/
+
+# Ignore Python bytecode files (optional)
+__pycache__/
