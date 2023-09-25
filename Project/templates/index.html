@@ -6,10 +6,10 @@
     <title>Molecular Property Prediction</title>
     <link rel="stylesheet" href="/static/styles.css">
     <script src="//unpkg.com/alpinejs" defer></script>
-    <script src="/static/index.js" defer></script>
-
+    <script src="search.js" defer></script>
 </head>
 <body>
+
     <nav>
         <ul class="nav-list">
             <li><a href="{{ url_for('index') }}">Home</a></li>
@@ -18,30 +18,57 @@
             <li><a href="{{ url_for('contact') }}">Contact</a></li>
         </ul>
     </nav>
-    
-    <hr>
-    <main>
-        <section class="middle">
-            <div class="background">
-                <header>
-                    <h1>Welcome to DrugCheckMaster</h1>
-                </header>
-                <section>
-                    <h3>For all your Chemistry needs!</h3>
-                </section>
-                <section>
-                    <div class="page">
-                        <a href="{{ url_for('search') }}">
-                            <img src="/static/public/clicking_finger.jpg" alt="Finger clicking button">
-                        </a>
-                    </div>
-                </section>
-            </div>
+
+    <main x-data="searchApp()">
+
+        <header>
+            <h1>DrugCheckMaster</h1>
+            <h2>Search</h2>
+        </header>
+
+        <!-- Text-Based Search Section -->
+        <section class="search-section">
+            <h3>Text-Based Search</h3>
+            <input x-model="textSearchQuery" x-on:input="searchText()" type="text" placeholder="Search by name or formula">
         </section>
+
+        <!-- Structure-Based Search Section -->
+        <section class="search-section">
+            <h3>Structure-Based Search</h3>
+            <!-- Include a structure drawing tool here, e.g., RDKit's ChemDraw -->
+            <!-- Example: <div id="structure-drawing"></div> -->
+            <textarea x-model="structureSearchQuery" x-on:input="searchStructure()" placeholder="Draw a molecular structure"></textarea>
+        </section>
+
+        <!-- Results Sections for Both Text and Structure-Based Searches -->
+        <section class="results-section">
+            <h2>Text-Based Search Results</h2>
+            <ul id="text-search-results">
+                <template x-for="result in textSearchResults" :key="result.id">
+                    <li x-text="result.Name" x-on:click="getCompoundInfo(result.id)"></li>
+                </template>
+            </ul>
+        </section>
+
+        <section class="results-section">
+            <h2>Structure-Based Search Results</h2>
+            <ul id="structure-search-results">
+                <template x-for="result in structureSearchResults" :key="result.id">
+                    <li x-text="result.Name" x-on:click="getCompoundInfo(result.id)"></li>
+                </template>
+            </ul>
+        </section>
+
+        <section class="compound-details">
+            <!-- Display compound details here based on user selection -->
+            <!-- Example: <div id="compound-details"></div> -->
+        </section>
+
     </main>
 
     <footer>
         <p>&copy; 2023 DrugCheckMaster</p>
     </footer>
+    
 </body>
 </html>
