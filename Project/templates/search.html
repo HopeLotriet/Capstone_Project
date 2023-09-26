@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Molecular Property Prediction</title>
-    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="/static/search.css">
+    <script src="https://chemdoodle.com/chemdoodle/ChemDoodleWeb.9.0.0.js" defer></script>
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="search.js" defer></script>
+
 </head>
+
 <body>
 
     <nav>
@@ -18,43 +22,77 @@
             <li><a href="{{ url_for('contact') }}">Contact</a></li>
         </ul>
     </nav>
-
+    <header>
+        <h1>DrugCheckMaster</h1>
+    </header>
     <main x-data="searchApp()">
 
-        <header>
-            <h1>DrugCheckMaster</h1>
+
+        <div>
             <h2>Search</h2>
-        </header>
-    
+        </div>
+
+        <!-- Text-Based Search Section -->
         <section class="search-section">
-            <input x-model="searchQuery" x-on:input="search()" type="text" placeholder="Enter your search query">
+            <input x-model="textSearchQuery" x-on:input="searchText()" type="text"
+                placeholder="Search by name or formula">
+            <button class="search_button">Search</button>
         </section>
-    
+
+        <!-- Structure-Based Search Section -->
+        <section class="search-section">
+            <h3>Structure-Based Search</h3>
+            <div><a href="{{ url_for('drawing') }}">Drawing Canvas</a></div>
+            <button class="search_button">Search</button>
+        </section>
+
+        <section class="search-section">
+            <h3>Structure-Based Search</h3>
+            <!-- ChemDoodle Drawing Canvas -->
+            <div class="" id="drawingCanvas" style="width: 400px; height: 400px;"></div>
+            <input type="text" id="searchInput" placeholder="Search">
+            <button id="searchButton">Search</button>
+            <div id="searchResults"></div>
+        </section>
+
+
+
+        <!-- Results Sections for Both Text and Structure-Based Searches -->
         <section class="results-section">
-            <h2>Search Results</h2>
-            <ul id="search-results">
-                <template x-for="result in searchResults" :key="result">
-                    <li x-text="result"></li>
+
+            <ul id="text-search-results">
+                <template x-for="result in textSearchResults" :key="result.id">
+                    <li x-text="result.Name" x-on:click="getCompoundInfo(result.id)"></li>
                 </template>
             </ul>
         </section>
-    
-        <section class="pagination-section">
-            <div id="pagination">
-                <template x-for="page in totalPages" :key="page">
-                    <a href="#" x-text="page" x-on:click="changePage(page)"></a>
+
+        <section class="results-section">
+
+            <ul id="structure-search-results">
+                <template x-for="result in structureSearchResults" :key="result.id">
+                    <li x-text="result.Name" x-on:click="getCompoundInfo(result.id)"></li>
                 </template>
+            </ul>
+        </section>
+
+        <section class="compound-details">
+            <h3>Compound Details</h3>
+            <div id="compoundDetails">
+                <!-- Display molecular weight, chemical formula, and properties here -->
+                <p><strong>Name:</strong> <span x-text="selectedCompound.name"></span></p>
+                <p><strong>Molecular Weight:</strong> <span x-text="selectedCompound.molecularWeight"></span></p>
+                <p><strong>Chemical Formula:</strong> <span x-text="selectedCompound.chemicalFormula"></span></p>
+                <!-- Add more properties as needed -->
             </div>
         </section>
 
-
     </main>
-
-   
 
     <footer>
         <p>&copy; 2023 DrugCheckMaster</p>
     </footer>
-    
+
 </body>
+
 </html>

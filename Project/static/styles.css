@@ -16,8 +16,8 @@ body {
 
 header {
     background-color: #007BFF;
-            color: #FFF;
-            padding: 20px;
+    color: #FFF;
+    padding: 20px;
 }
 
 h1 {
@@ -40,14 +40,14 @@ section {
 
 /* Style the footer */
 footer {
-    background-color: #007BFF;
+    background-color: #333;
     color: #FFF;
     padding: 10px 0;
     text-align: center;
 }
 
 nav {
-    background-color: #7e93a8;
+    background-color: #333;
     color: #FFF;
     padding: 10px 0;
 }
@@ -99,3 +99,4 @@ section {
     height: 200px;
     cursor: pointer;
 }
+

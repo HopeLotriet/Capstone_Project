@@ -4,14 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Molecular Property Prediction</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/static/search.css">
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="index.js" defer></script>
+    <script src="chemdraw.js" defer></script>
+
 </head>
 <body>
+
+    <nav>
+        <ul class="nav-list">
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('search') }}">Search</a></li>
+            <li><a href="{{ url_for('about') }}">About Us</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+    </nav>
+
+
     <header>
         <h1>Welcome to DrugCheckMaster</h1>
     </header>
+
+    
+    <section x-data="drawCanvas" x-init="initChemDraw">
+        <h3>Structure Search</h3>
+        <label for="chemdraw-canvas">Draw a chemical structure:</label>
+        <!-- Include a structure drawing tool here, e.g., RDKit's ChemDraw -->
+
+        <p>Click and drag to draw your chemical structure.</p>
+
+        <canvas class="canvas" id="chemdraw-canvas" width="400" height="400"></canvas>
+        <button class="canvas_button" x-on:click="clearDrawing()">Clear</button>
+
+    </section>
+
+    <div>
+        <a href="javascript:history.back();">Go Back</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 DrugCheckMaster</p>
+    </footer>
     
 </body>
 </html>
