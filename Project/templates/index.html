@@ -15,7 +15,7 @@
             <li><a href="{{ url_for('index') }}">Home</a></li>
             <li><a href="{{ url_for('search') }}">Search</a></li>
             <li><a href="{{ url_for('about') }}">About Us</a></li>
-            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
         </ul>
     </nav>
     
@@ -24,21 +24,31 @@
         <section class="middle">
             <div class="background">
                 <header>
-                    <h1>Welcome to DrugCheckMaster</h1>
+                    <h1>Welcome to DrugCheckMaster<img src="/static/public/medicines.png" alt="pills" width="100"></h1>
                 </header>
-                <section>
+                <section class="sub">
                     <h3>For all your Chemistry needs!</h3>
                 </section>
                 <section>
                     <div class="page">
                         <a href="{{ url_for('search') }}">
-                            <img src="/static/public/clicking_finger.jpg" alt="Finger clicking button">
+                            <img src="/static/public/clicking_finger.jpg" alt="Finger clicking button" class="img">
                         </a>
                     </div>
+
+                    <section class="container">
+                        <img src="/static/public/compound.png" alt="chemistry compound" width="75" class="comp">
+                        <img src="/static/public/chemistry.png" alt="chemistry compound" width="75" class="chem">
+                    </section>
                 </section>
             </div>
         </section>
+
+        
+    
     </main>
+
+   
 
     <footer>
         <p>&copy; 2023 DrugCheckMaster</p>

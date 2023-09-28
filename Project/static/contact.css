@@ -1,28 +1,29 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: lightgray;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 header {
-    background-color: #007BFF;
-            color: #FFF;
-            padding: 20px;
-            text-align: center;
+    background-color: #e472f6;
+    color: #FFF;
+    padding: 20px;
+    margin-left: 150px;
 }
 
 h1 {
     margin: 0;
-    font-size: 2em;
+    font-size: 36px;
+    text-align: center;
 }
 
 /* Style the contact form section */
 #contact-form {
     background-color: #FFF;
     padding: 20px;
-    margin: 20px;
+    margin: 15px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -37,7 +38,7 @@ label {
 input[type="text"],
 input[type="email"],
 textarea {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
@@ -112,43 +113,65 @@ button[type="submit"]:hover {
 
 /* Style the footer */
 footer {
-    background-color: #007BFF;
+    background-color: #333;
     color: #FFF;
     padding: 10px 0;
     text-align: center;
 }
 
 
-/* Add some styling to the navigation bar */
-nav {
-    background-color: #007BFF;
+/* Style the side navigation bar */
+.side-nav {
+    background-color: #333;
     color: #FFF;
-    padding: 10px 0;
-    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 150px; /* Adjust the width as needed */
+    text-align: left; /* Align text to the left */
+    padding-top: 20px;
 }
 
-nav ul {
+/* Style the side navigation links */
+.side-nav .nav-list {
     list-style-type: none;
+    padding-left: 20px;
 }
 
-nav ul li {
-    display: inline;
-    margin-right: 20px;
+.side-nav .nav-list li {
+    margin-bottom: 10px;
 }
 
-nav ul li:last-child {
-    margin-right: 0;
-}
-
-nav a {
+.side-nav .nav-list a {
     text-decoration: none;
     color: #FFF;
-    font-weight: bold;
     font-size: 1.2em;
     transition: color 0.3s;
 }
 
-nav a:hover {
+.side-nav .nav-list a:hover {
     color: #0056b3;
 }
+
+/* Adjust the content area to make space for the side navigation */
+.about {
+    margin-left: 150px; /* Match the width of the side nav + some padding */
+}
+
+/* Add responsiveness for smaller screens */
+@media (max-width: 768px) {
+
+    /* Adjust the side nav for smaller screens */
+    .side-nav {
+        width: 100%; /* Occupy full width on smaller screens */
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    .side-nav .nav-list {
+        padding-left: 0;
+    }
+}
+
 

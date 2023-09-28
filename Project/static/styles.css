@@ -15,7 +15,7 @@ body {
 }
 
 header {
-    background-color: #007BFF;
+    background-color: #e472f6;
     color: #FFF;
     padding: 20px;
 }
@@ -24,8 +24,27 @@ h1 {
     margin: 0;
 }
 
+.sub {
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+}
+
 section {
     margin-top: 20px;
+}
+
+.img {
+    border: 2px solid;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.chem, .comp{
+    flex: 0 0 auto;
 }
 
 .page {
@@ -81,7 +100,7 @@ ul.nav-list li a:hover {
 .middle{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     height: 100vh;
 }

@@ -14,19 +14,21 @@
 
 <body>
 
-    <nav>
+    <nav class="side-nav">
         <ul class="nav-list">
             <li><a href="{{ url_for('index') }}">Home</a></li>
             <li><a href="{{ url_for('search') }}">Search</a></li>
             <li><a href="{{ url_for('about') }}">About Us</a></li>
-            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
         </ul>
     </nav>
-    <header>
-        <h1>DrugCheckMaster</h1>
-    </header>
-    <main x-data="searchApp()">
 
+    <header>
+        <h1>DrugCheckMaster<img src="/static/public/medicines.png" alt="pills" width="40"></h1>
+    </header>
+
+
+    <main class="about" x-data="searchApp()">
 
         <div>
             <h2>Search</h2>
@@ -34,24 +36,20 @@
 
         <!-- Text-Based Search Section -->
         <section class="search-section">
-            <input x-model="textSearchQuery" x-on:input="searchText()" type="text"
-                placeholder="Search by name or formula">
-            <button class="search_button">Search</button>
+            <input class="input" type="text" x-model="textSearchQuery" x-on:input="searchText()" placeholder="Search by name or formula">
+            <button class="button">Search</button>
         </section>
+
+        <br>
+        <br>
 
         <!-- Structure-Based Search Section -->
         <section class="search-section">
-            <h3>Structure-Based Search</h3>
-            <div><a href="{{ url_for('drawing') }}">Drawing Canvas</a></div>
-            <button class="search_button">Search</button>
-        </section>
-
-        <section class="search-section">
-            <h3>Structure-Based Search</h3>
             <!-- ChemDoodle Drawing Canvas -->
+            <input class="input" type="text" placeholder="Search by structure">
+            <button class="Button"><img src="/static/public/drawing.png" alt="draw search" width="40"></button>
             <div class="" id="drawingCanvas" style="width: 400px; height: 400px;"></div>
-            <input type="text" id="searchInput" placeholder="Search">
-            <button id="searchButton">Search</button>
+            <div><a href="{{ url_for('drawing') }}">Drawing Canvas</a></div>
             <div id="searchResults"></div>
         </section>
 
@@ -77,12 +75,11 @@
         </section>
 
         <section class="compound-details">
-            <h3>Compound Details</h3>
             <div id="compoundDetails">
                 <!-- Display molecular weight, chemical formula, and properties here -->
-                <p><strong>Name:</strong> <span x-text="selectedCompound.name"></span></p>
-                <p><strong>Molecular Weight:</strong> <span x-text="selectedCompound.molecularWeight"></span></p>
-                <p><strong>Chemical Formula:</strong> <span x-text="selectedCompound.chemicalFormula"></span></p>
+                <span x-text="selectedCompound.name"></span>
+                <span x-text="selectedCompound.molecularWeight"></span>
+                <span x-text="selectedCompound.chemicalFormula"></span>
                 <!-- Add more properties as needed -->
             </div>
         </section>
