@@ -28,20 +28,25 @@ def index():
 def search():
     return render_template("search.html")
 
-
 @app.route("/about")
 def about():
     return render_template("about.html")
-
 
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
 
-
 @app.route("/drawing")
 def drawing():
     return render_template("drawing.html")
+
+@app.route("/classification")
+def classification():
+    return render_template("classification.html")
+
+@app.route("/database")
+def database():
+    return render_template("database.html")
 
 
 # Get the absolute path to the model file
