@@ -6,3 +6,6 @@
 
 # Ignore Python bytecode files (optional)
 __pycache__/
+
+# Ignore node modules
+node_modules/

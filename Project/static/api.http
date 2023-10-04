@@ -44,14 +44,16 @@ POST http://localhost:5000/calculate_molecular_weight
 Content-Type: application/json
 
 {
-  "structure": "chemical_structure"
+  "Name": "Aspirin", 
+  "MolecularWeight": 180.158
 }
 
 ### Search for a compound
-POST http://localhost:5000/search-api
+POST http://localhost:5000/search_compound
 Content-Type: application/json
 
 {
-  "molecule": "chemical_structure"
+    "id": 1,
+  "Name": "Bivaluridin"
 }
 
