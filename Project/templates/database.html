@@ -16,6 +16,7 @@
         <ul class="nav-list">
             <li><a href="{{ url_for('index') }}">Home</a></li>
             <li><a href="{{ url_for('search') }}">Search</a></li>
+            <li><a href="{{ url_for('drawing') }}">Draw</a></li>
             <li><a href="{{ url_for('classification') }}">Classification</a></li>
             <li><a href="{{ url_for('database') }}">Database</a></li>
             <li><a href="{{ url_for('about') }}">About Us</a></li>
@@ -27,7 +28,7 @@
         <h1>DrugCheckMaster<img src="/static/public/medicines.png" alt="pills" width="40"></h1>
     </header>
 
-    <div class="about" x-data="drugApp">
+    <div class="about" x-data="drugApp()">
 
         <section class="data">
 
@@ -89,6 +90,17 @@
         </section>
 
     </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
 
     <footer>

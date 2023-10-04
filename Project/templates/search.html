@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/static/search.css">
     <script src="https://chemdoodle.com/chemdoodle/ChemDoodleWeb.9.0.0.js" defer></script>
     <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="chemdraw.js" defer></script>
     <script src="search.js" defer></script>
 
 </head>
@@ -18,17 +19,17 @@
         <ul class="nav-list">
             <li><a href="{{ url_for('index') }}">Home</a></li>
             <li><a href="{{ url_for('search') }}">Search</a></li>
+            <li><a href="{{ url_for('drawing') }}">Draw</a></li>
             <li><a href="{{ url_for('classification') }}">Classification</a></li>
             <li><a href="{{ url_for('database') }}">Database</a></li>
             <li><a href="{{ url_for('about') }}">About Us</a></li>
             <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
         </ul>
     </nav>
-
+                                                  
     <header>
         <h1>DrugCheckMaster<img src="/static/public/medicines.png" alt="pills" width="40"></h1>
     </header>
-
 
     <main class="about" x-data="searchApp()">
 
@@ -48,14 +49,15 @@
         <!-- Structure-Based Search Section -->
         <section class="search-section">
             <!-- ChemDoodle Drawing Canvas -->
-            <input class="input" type="text" placeholder="Search by structure">
-            <button class="Button"><img src="/static/public/drawing.png" alt="draw search" width="40"></button>
-            <div><a href="{{ url_for('drawing') }}">Drawing Canvas</a></div>
-            <div id="searchResults"></div>
+            <!-- <input class="input" type="text" placeholder="Search by structure"> -->
+
+            <div class="page">
+                <a href="{{ url_for('drawing') }}">
+                    <img src="/static/public/drawing.png" alt="draw search" class="img" width="100px">
+                </a>
+            </div>
+
         </section>
-
-
-
 
 
         <!-- Results Sections for Both Text and Structure-Based Searches -->
@@ -88,6 +90,15 @@
         </section>
 
     </main>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
 
     <footer>
         <p>&copy; 2023 DrugCheckMaster</p>
