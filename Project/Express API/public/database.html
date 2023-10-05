@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Molecular Property Prediction</title>
-    <link rel="stylesheet" href="/static/database.css">
-    <script src="/static/app.js" defer></script>
+    <link rel="stylesheet" href="/Project/Express API/static/database.css">
+    <script src="/Project/Express API/app.js" defer></script>
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
@@ -14,18 +14,18 @@
 <body>
     <nav class="side-nav">
         <ul class="nav-list">
-            <li><a href="{{ url_for('index') }}">Home</a></li>
-            <li><a href="{{ url_for('search') }}">Search</a></li>
-            <li><a href="{{ url_for('drawing') }}">Draw</a></li>
-            <li><a href="{{ url_for('classification') }}">Classification</a></li>
-            <li><a href="{{ url_for('database') }}">Database</a></li>
-            <li><a href="{{ url_for('about') }}">About Us</a></li>
-            <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+            <li><a href="/Project/Express API/public/index.html">Home</a></li>
+            <li><a href="/Project/Express API/public/search.html">Search</a></li>
+            <li><a href="/Project/Express API/public/drawing.html">Draw</a></li>
+            <li><a href="/Project/Express API/public/classification.html">Classification</a></li>
+            <li><a href="/Project/Express API/public/database.html">Database</a></li>
+            <li><a href="/Project/Express API/public/about.html">About Us</a></li>
+            <li><a href="/Project/Express API/public/contact.html">Contact Us</a></li>
         </ul>
     </nav>
 
     <header>
-        <h1>DrugCheckMaster<img src="/static/public/medicines.png" alt="pills" width="40"></h1>
+        <h1>DrugCheckMaster<img src="/Project/Express API/images/medicines.png" alt="pills" width="40"></h1>
     </header>
 
     <div class="about" x-data="drugApp()">
