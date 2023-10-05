@@ -11,6 +11,8 @@
     <script src="chemdraw.js" defer></script>
     <script src="https://chemdoodle.com/dist/ChemDoodleWeb-libs.js"></script>
     <script src="https://chemdoodle.com/dist/ChemDoodleWeb.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 
 </head>
 
@@ -44,6 +46,23 @@
                 <!-- Add lines or other references here -->
     
                 <div class="symbolsContainer" id="elementSymbols ">
+
+                    <div class="elementsSection">
+                        <!-- <p>Lines:</p> -->
+                        <button class="symbolsButtons"><i class="fa fa-pencil"></i></button>
+                        <button class="symbolsButtons"><i class="fa fa-eraser"></i></button>
+                        <button class="symbolsButtons"><i class="fa fa-undo"></i></button>
+                        <button class="symbolsButtons"><i class="fa fa-redo"></i></button>
+                        <button class="symbolsButtons" onclick="addSymbol('Single Bond')">/</button>
+                        <button class="symbolsButtons" onclick="addSymbol('Double Bond')">//</button>
+                        <button class="symbolsButtons" onclick="addSymbol('Triple Bond')">///</button>
+                        <button class="symbolsButtons"><i class="fa fa-circle"></i></button>
+                        <button class="symbolsButtons"><i class="fa-regular fa-circle"></i></button>
+                        <button class="symbolsButtons"><i class="fa-regular fa-square"></i></button>
+                   
+                        <!-- Add more buttons for other types of lines as needed -->
+                    </div>
+
                     <div class="symbolsSection">
                         <!-- <p>Element Symbols:</p> -->
                         <button class="symbolsButtons" onclick="addSymbol('H')">H</button>
@@ -55,24 +74,11 @@
                         <button class="symbolsButtons" onclick="addSymbol('F')">F</button>
                         <button class="symbolsButtons" onclick="addSymbol('S')">S</button>
                         <button class="symbolsButtons" onclick="addSymbol('P')">P</button>
-                        <button class="symbolsButtons"><i class="fa fa-redo"></i></i></button>
+                        <button class="symbolsButtons" onclick="addSymbol('n')">n</button>
                         <!-- Add more buttons for other elements as needed -->
                     </div>
     
-                    <div class="elementsSection">
-                        <!-- <p>Lines:</p> -->
-                        <button class="symbolsButtons" onclick="addSymbol('Single Bond')">―</button>
-                        <button class="symbolsButtons" onclick="addSymbol('Double Bond')">═</button>
-                        <button class="symbolsButtons" onclick="addSymbol('Triple Bond')">≡</button>
-                        <button class="symbolsButtons" onclick="addSymbol('Benzene ring')">Benzene ring</button>
-                        <button class="symbolsButtons" onclick="addSymbol('')"></button>
-                        <button class="symbolsButtons" onclick="addSymbol('')"></button>
-                        <button class="symbolsButtons"><i class="fa fa-Benzene ring"></i></i></button>
-                        <button class="symbolsButtons"><i class="fa fa-eraser"></i></i></button>
-                        <button class="symbolsButtons"><i class="fa fa-pencil"></i></button>
-                        <button class="symbolsButtons"><i class="fa fa-undo"></i></i></button>
-                        <!-- Add more buttons for other types of lines as needed -->
-                    </div>
+               
                 </div>
     
                 <canvas class="canvas" id="chemicalStructureCanvas" width="600" height="500"></canvas>
@@ -80,7 +86,7 @@
             </div>
             <script>
                 // Initialize the ChemDoodle canvas
-                var chemDoodleCanvas = new ChemDoodleCanvas('chemDoodleCanvas', 500, 300);
+                var chemDoodleCanvas = new ChemDoodleCanvas('chemicalStructureCanvas', 500, 300);
     
                 // Function to add an element symbol to the canvas
                 function addSymbol(symbol) {
@@ -99,7 +105,7 @@
             </div>
     
             <button class="canvas_button" x-on:click="clearDrawing()">Clear</button>
-            <button class="canvas_button" x-on:click="searchDrawing()">Search</button>
+            <button class="canvas_button" x-on:click="searchMolecule()">Search</button>
     
         </section>
     

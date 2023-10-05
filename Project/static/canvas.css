@@ -94,7 +94,7 @@ p {
 
 
 canvas {
-    border: 1px solid #ccc;
+    border: 1px solid;
     border-radius: 5px;
 }
 
