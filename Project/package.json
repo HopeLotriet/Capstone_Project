@@ -25,7 +25,8 @@
   "contributors": [],
   "scripts": {
     "dev": "",
-    "test": ""
+    "test": "",
+    "start": "node index.js"
   },
   "dependencies": {
     "csv-parser": "^3.0.0",
