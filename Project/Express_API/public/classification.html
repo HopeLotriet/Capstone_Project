@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Molecular Property Prediction</title>
+    <link rel="stylesheet" href="/Express_API/static/search.css">
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="/xpress_API/public/index.js" defer></script>
+</head>
+
+<body>
+    <nav class="side-nav">
+        <ul class="nav-list">
+            <li><a href="/Express_API/public/index.html">Home</a></li>
+            <li><a href="/Express_API/public/search.html">Search</a></li>
+            <li><a href="/Express_API/public/drawing.html">Draw</a></li>
+            <li><a href="/Express_API/public/classification.html">Classification</a></li>
+            <li><a href="/Express_API/public/database.html">Database</a></li>
+            <li><a href="/Express_API/public/about.html">About Us</a></li>
+            <li><a href="/Express_API/public/contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>DrugCheckMaster<img src="/Express_API/images/medicines.png" alt="pills" width="40"></h1>
+    </header>
+
+    <div class="about">
+        <section class="drug">
+            <div>
+                <h2>Druggability</h2>
+                <input class="input" type="text" id="drugName" placeholder="Enter drug name">
+                <button class="button" onclick="checkDruggability()">Check Druggability</button>
+                <div id="druggabilityChart"></div>
+            </div>
+        </section>
+
+        <div>
+            <canvas id="pieChart" width="400" height="400"></canvas>
+        </div>
+    
+    
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    
+
+    </div>
+        <footer>
+            <p>&copy; 2023 DrugCheckMaster</p>
+        </footer>
+    
+
+    <script>
+        function checkDruggability() {
+            var drugName = document.getElementById("drugName").value;
+            var druggabilityPercentage = getDruggability(drugName); // Implement a function to get druggability based on drug name
+            displayDruggability(druggabilityPercentage);
+        }
+
+        function displayDruggability(percentage) {
+            var chartData = {
+                labels: ["Very Bad", "Bad", "Regular", "Good", "Excellent"],
+                datasets: [{
+                    data: [20, 40, 60, 80, 100],
+                    backgroundColor: ["#FF5733", "#FFC300", "#DAF7A6", "#C70039", "#900C3F"]
+                }]
+            };
+
+            var ctx = document.getElementById("druggabilityChart").getContext("2d");
+            var myPieChart = new Chart(ctx, {
+                type: 'pie',
+                data: chartData
+            });
+        }
+    </script>
+
+</body>
+
+</html>
