@@ -2,7 +2,8 @@ import express from 'express';
 import * as sqlite from 'sqlite';
 import sqlite3 from 'sqlite3';
 import fs from 'fs';
-import csvParser from 'csv-parser';
+// import csvParser from 'csv-parser';
+import cors from 'cors';
 
 console.log("Current Working Directory: ", process.cwd());
 
@@ -10,6 +11,7 @@ const app = express();
 
 app.use(express.static('public'));
 app.use(express.json());
+app.use(cors());
 
 async function initializeDatabase() {
     try {
@@ -18,13 +20,13 @@ async function initializeDatabase() {
             driver: sqlite3.Database
         });
         await db.migrate(); // Perform migrations
-        await insertDataFromCSV(db);
-        return db;
+        return db; // Return the database instance
     } catch (error) {
         console.error('Error initializing database:', error);
         throw error;
     }
 }
+
 
 // async function insertDataFromCSV(db) {
 //     const data = [];
@@ -94,10 +96,15 @@ app.get('/get_compound', async function (req, res) {
 //     return result;
 // }
 
-// export async function getAllCompounds() {
-//     const result = await db.all(`select * from lipinski_properties`);
-//     return result;
-// }
+export async function getAllCompounds(db) {
+    try {
+        const result = await db.all(`select * from lipinski_properties`);
+        return result;
+    } catch (error) {
+        console.error('Error retrieving compounds:', error);
+        throw error;
+    }
+}
 
 ///////////
 
@@ -113,10 +120,10 @@ app.get('/get_logp', async function (req, res) {
     }
 });
 
-// export async function getLogPs() {
-//     const result = await db.all(`select * from lipinski_properties`);
-//     return result;
-// }
+export async function getLogPs(db) {
+    const result = await db.all(`select LogP from lipinski_properties`);
+    return result;
+}
 ////////////
 
 app.post('/predict_lipinski', async function (req, res) {
@@ -134,10 +141,10 @@ app.post('/predict_lipinski', async function (req, res) {
 });
 
 
-// export async function predictLipinski(Name, HBD, HBA, MolecularWeight, LogP, TPSA, Num_Rotatable_Bonds, SAS, passesLipinski) {
-//     const sql = `predict_lipinski lipinski_properties set Name = ?, HBD = ?, HBA = ?, MolecularWeight = ?, LogP = ?, TPSA = ?, Num_Rotatable_Bonds = ?, SAS = ? where passesLipinski = ?`;
-//     await db.run(sql, [Name, HBD, HBA, MolecularWeight, LogP, TPSA, Num_Rotatable_Bonds, SAS, passesLipinski])
-// }
+export async function predictLipinski(Name, HBD, HBA, MolecularWeight, LogP, TPSA, Num_Rotatable_Bonds, SAS, passesLipinski) {
+    const sql = `predict_lipinski lipinski_properties set Name = ?, HBD = ?, HBA = ?, MolecularWeight = ?, LogP = ?, TPSA = ?, Num_Rotatable_Bonds = ?, SAS = ? where passesLipinski = ?`;
+    await db.run(sql, [Name, HBD, HBA, MolecularWeight, LogP, TPSA, Num_Rotatable_Bonds, SAS, passesLipinski])
+}
 
 ////////
 
@@ -155,10 +162,10 @@ app.post('/calculate_molecular_weight', async function (req, res) {
     }
 });
 
-// export async function calculateMolecularWeight(Name, MolecularWeight) {
-//     const sql = `calculate_molecular_weight from lipinski_properties set MolecularWeight = ?, where Name = ?`;
-//     await db.run(sql, [Name, MolecularWeight])
-// }
+export async function calculateMolecularWeight(Name, MolecularWeight) {
+    const sql = `calculate_molecular_weight from lipinski_properties set MolecularWeight = ?, where Name = ?`;
+    await db.run(sql, [Name, MolecularWeight])
+}
 
 ///////
 
@@ -176,10 +183,10 @@ app.post('/search_compound', async function (req, res) {
     }
 });
 
-// export async function searchCompound(id, Name) {
-//     const sql = `search_compound from lipinski_properties set Name = ?, where id = ?`;
-//     await db.run(sql, [id, Name])
-// }
+export async function searchCompound(id, Name) {
+    const sql = `search_compound from lipinski_properties set Name = ?, where id = ?`;
+    await db.run(sql, [id, Name])
+}
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server started on port: ${PORT}`))

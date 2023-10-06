@@ -2,9 +2,6 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url('public/hexagons-pattern-background-genetic-research-molecular-structure-chemical-engineering-concept-innovation-technology-used-design-healthcare-science-medicine-background_322958-2209.avif');
-    background-size: cover;
-    background-position: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: lightgray;
 }
