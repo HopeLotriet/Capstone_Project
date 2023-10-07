@@ -1,0 +1,59 @@
+### Predict lipinski properties
+
+POST http://localhost:3000/passes_lipinski
+Content-Type: application/json
+
+{
+  "HBD": 2,
+  "HBA": 3,
+  "MolecularWeight": 200,
+  "LogP": 1.5,
+  "TPSA": 50,
+  "Num_Rotatable_Bonds": 4,
+  "SAS": 80
+}
+
+### GET a compound id
+
+GET http://localhost:3000/get_compound
+
+
+### GET a LogP of a compound
+
+GET http://localhost:3000/get_logp
+
+
+### Calculate properties
+
+POST http://localhost:3000/calculate_properties
+Content-Type: application/json
+
+{
+  "HBD": 2,
+  "HBA": 3,
+  "MolecularWeight": 200,
+  "LogP": 1.5,
+  "TPSA": 50,
+  "Num_Rotatable_Bonds": 4,
+  "SAS": 80
+}
+
+### Calculate molecular weight
+
+POST http://localhost:3000/calculate_molecular_weight
+Content-Type: application/json
+
+{
+  "Name": "Aspirin", 
+  "MolecularWeight": 180.158
+}
+
+### Search for a compound
+POST http://localhost:3000/search_compound
+Content-Type: application/json
+
+{
+    "id": 1,
+  "Name": "Bivaluridin"
+}
+
