@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Molecular Property Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='search.css') }}">
+
+</head>
+
+<body>
+
+    <nav class="side-nav">
+        <ul class="nav-list">
+            <li><a href="%FLASK_ROUTE%/index">Home</a></li>
+            <li><a href="search.html">Search</a></li>
+            <li><a href="drawing.html">Draw</a></li>
+            <li><a href="classification.html">Classification</a></li>
+            <li><a href="database.html">Database</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>DrugCheckMaster<img src="{{ url_for('static', filename='medicines.png') }}" alt="pills" width="40"></h1>
+    </header>
+
+    <main class="about">
+
+        <div>
+            <h2>Druggability Classification</h2>
+        </div>
+
+
+        <section>
+            <form id="classification-form">
+                <label for="HBD">HBD (Hydrogen Bond Donors):</label>
+                <input type="number" name="HBD" required><br>
+                <label for="HBA">HBA (Hydrogen Bond Acceptors):</label>
+                <input type="number" name="HBA" required><br>
+                <label for="MolecularWeight">Molecular Weight:</label>
+                <input type="number" name="MolecularWeight" required><br>
+                <label for="LogP">LogP:</label>
+                <input type="number" name="LogP" step="0.01" required><br>
+                <label for="TPSA">TPSA (Polar Surface Area):</label>
+                <input type="number" name="TPSA" required><br>
+                <label for="Num_Rotatable_Bonds">Number of Rotatable Bonds:</label>
+                <input type="number" name="Num_Rotatable_Bonds" required><br>
+                <label for="SAS">Synthetic Accessibility Score:</label>
+                <input type="number" name="SAS" required><br>
+                <button type="button" onclick="classifyDrug()">Classify</button>
+            </form>
+            <div class="result" id="classification-result"></div>
+        </section>
+        
+        
+
+    </main>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <footer>
+        <p>&copy; 2023 DrugCheckMaster</p>
+    </footer>
+
+    <script>
+
+function classifyDrug() {
+    const formData = new FormData(document.getElementById('classification-form'));
+
+    fetch('/classify', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        const resultDiv = document.getElementById('classification-result');
+        resultDiv.textContent = `Pass Percentage: ${data.pass_percentage.toFixed(2)}%\nClassification: ${data.classification}`;
+        resultDiv.style.display = 'block';
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+    </script>
+
+</body>
+
+</html>
