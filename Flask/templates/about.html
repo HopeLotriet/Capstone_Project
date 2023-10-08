@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Molecular Property Prediction</title>
-    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
     <script src="//unpkg.com/alpinejs" defer></script>
     
 </head>
@@ -14,18 +14,21 @@
 
     <nav class="side-nav">
         <ul class="nav-list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="search.html">Search</a></li>
-            <li><a href="database.html">Database</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="guideline.html">Guideline</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="{{ url_for('predict') }}">Predict</a></li>
+            <li><a href="{{ url_for('classification') }}">Classification</a></li>
+            <!-- <li><a href="/search.html">Search</a></li>
+            <li><a href="/database.html">Database</a></li> -->
+            <li><a href="{{ url_for('about') }}">About Us</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+            <li><a href="{{ url_for('guideline') }}">Guideline</a></li>
         </ul>
     </nav>
 
 
     <header>
-        <h1>DrugCheckMaster<img src="/images/medicines.png" alt="pills" width="40"></h1>
+        <h1>DrugCheckMaster<img src="{{ url_for('static', filename='medicines.png') }}" alt="pills"
+                width="40"></h1>
     </header>
 
     <section class="about">
@@ -76,7 +79,7 @@
                 <p>Phone: +27 81 888 1270</p>
                 <p>Address: 69 Kingsway Ave, Auckland Park, Johannesburg, 2092, RSA</p>
 
-                <p>For more contact options and inquiries, please visit our <a href="contact.html">Contact
+                <p>For more contact options and inquiries, please visit our <a href="{{ url_for('contact') }}">Contact
                         Page.</a></p>
             </div>
         </div>

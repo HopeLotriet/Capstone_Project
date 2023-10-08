@@ -1,31 +1,44 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_from_directory
 import joblib
 import os
 import pandas as pd
-from sklearn import preprocessing
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.ensemble import RandomForestClassifier
-from sklearn import metrics
-from sklearn.preprocessing import LabelEncoder
+# from sklearn import preprocessing
+# from sklearn.model_selection import train_test_split
+# from sklearn.preprocessing import StandardScaler
+# from sklearn.ensemble import RandomForestClassifier
+# from sklearn import metrics
+# from sklearn.preprocessing import LabelEncoder
 
 
 app = Flask(__name__)
 
+@app.route("/")
+def index():
+    return render_template("index.html")
 
-
-# @app.route("/")
-# def index():
-#     return render_template("index.html")
-
-
-@app.route("/search")
-def search():
-    return render_template("search.html")
+@app.route("/predict")
+def predict():
+    return render_template("predict.html")
 
 @app.route("/classification")
 def classification():
     return render_template("classification.html")
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
+@app.route("/guideline")
+def guideline():
+    return render_template("guideline.html")
+
+# @app.route('/')
+# def serve_index():
+#     return send_from_directory('public', 'index.html')
 
 # Get the absolute path to the model file
 model_file_path = os.path.abspath('Best_RFModel.pkl')

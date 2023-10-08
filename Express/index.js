@@ -16,19 +16,19 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '..', 'public')));
-
+const publicDirectoryPath = path.join(__dirname, 'public');
+app.use(express.static(publicDirectoryPath));
 
 app.use(cors());
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-    const filePath = path.join(__dirname, '..', 'public', 'index.html');
+    const filePath = path.join(publicDirectoryPath, 'search.html');
     res.sendFile(filePath);
 });
 
 const db = await sqlite.open({
-    filename: './Express/lipinski_properties.db',
+    filename: './lipinski_properties.db',
     driver: sqlite3.Database
 });
 
@@ -95,6 +95,9 @@ await db.migrate()
 
 // Define a route handler for the root path
 
+// app.get('/', (req, res) => {
+//     res.send('<h1>Node.js Application Content</h1>');
+// });
 
 
 app.get('/get_compound', async function (req, res) {

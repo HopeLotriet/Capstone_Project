@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Molecular Property Prediction</title>
-    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='contact.css') }}">
     <script src="//unpkg.com/alpinejs" defer></script>
     
 </head>
@@ -14,24 +14,27 @@
 
     <nav class="side-nav">
         <ul class="nav-list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="search.html">Search</a></li>
-            <li><a href="database.html">Database</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="guideline.html">Guideline</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="{{ url_for('predict') }}">Predict</a></li>
+            <li><a href="{{ url_for('classification') }}">Classification</a></li>
+            <!-- <li><a href="/search.html">Search</a></li>
+            <li><a href="/database.html">Database</a></li> -->
+            <li><a href="{{ url_for('about') }}">About Us</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+            <li><a href="{{ url_for('guideline') }}">Guideline</a></li>
         </ul>
     </nav>
 
     <header>
-        <h1>DrugCheckMaster<img src="/images/medicines.png" alt="pills" width="40"></h1>
+        <h1>DrugCheckMaster<img src="{{ url_for('static', filename='medicines.png') }}" alt="pills"
+                width="40"></h1>
     </header>
     <main class="about">
 
         <h2>Contact Us</h2>
         <section id="contact-form">
             <h2>Contact Form</h2>
-            <form action="process_form.php" method="POST"> <!-- Replace with your form processing script -->
+            <form action="{{ url_for('static', filename='process_form.php') }}" method="POST"> <!-- Replace with your form processing script -->
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
 
