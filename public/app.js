@@ -1,20 +1,26 @@
+console.log('app.js script loaded.');
 document.addEventListener('alpine:init', () => {
+    console.log('Alpine initialized.');
     Alpine.data('drugApp', () => {
+        console.log('Component initialized')
         return {
             getCompound: [],
 
             init() {
+                console.log('Component initialized successfully');
                 this.getAllCompounds();
             },
 
             getAllCompounds() {
+                console.log('Fetching compounds...');
                 const getAllCompoundsURL = `/get_compound`;
                 axios.get(getAllCompoundsURL)
                     .then(result => {
+                        console.log('Compounds fetched successfully:', result.data);
                         this.getCompound = result.data.getCompound;
                     })
                     .catch(error => {
-                        console.error(error);
+                        console.error('Error fetching compounds:', error);
                     });
             },
 

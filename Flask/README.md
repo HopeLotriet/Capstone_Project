@@ -14,4 +14,3 @@ static/: This folder can contain static assets such as CSS files, JavaScript fil
 # Send a POST request to predict Lipinski's properties
 curl -X POST -H "Content-Type: application/json" -d '{"HBD": 2, "HBA": 3, "MolecularWeight": 200, "LogP": 1.5, "TPSA": 50, "Num_Rotatable_Bonds": 4, "SAS": 80}' http://localhost:5000/predict_lipinski
 
-[![Node.js Package](https://github.com/HopeLotriet/Capstone_Group_3/actions/workflows/npm-publish.yml/badge.svg?branch=main)](https://github.com/HopeLotriet/Capstone_Group_3/actions/workflows/npm-publish.yml)

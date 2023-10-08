@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="database.css">
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="app.js" defer></script>
+    <script src="app.js?v=1.0" defer></script>
+
 </head>
 
 <body x-data="drugApp">
@@ -65,7 +66,7 @@
 
                                 <td x-text="compound.id"></td>
                                 <td x-text="compound.Name"></td>
-                                <td x-text="compound.SMILES"></td>
+                                <!-- <td x-text="compound.SMILES"></td> -->
                                 <td x-text="compound.Formula"></td>
                                 <td x-text="compound.HBD"></td>
                                 <td x-text="compound.HBA"></td>

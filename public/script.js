@@ -1,11 +1,11 @@
 document.addEventListener('alpine:init', () => {
-    Alpine.data('app', () => {
+    Alpine.data('predictApp', () => {
         return {
             compoundName: '',
             predictionResult: null,
             async predictProperties() {
                 try {
-                    const response = await fetch('http://localhost:3000/predict_lipinski', {
+                    const response = await fetch('http://localhost:5000/predict_lipinski', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'

@@ -27,9 +27,9 @@ app.get('/', (req, res) => {
     res.sendFile(filePath);
 });
 
-const  db = await sqlite.open({
-    filename:  './lipinski_properties.db',
-    driver:  sqlite3.Database
+const db = await sqlite.open({
+    filename: './Express/lipinski_properties.db',
+    driver: sqlite3.Database
 });
 
 await db.migrate()
