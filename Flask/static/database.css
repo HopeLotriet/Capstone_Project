@@ -1,0 +1,168 @@
+body {
+    background-color: lightgray;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Style the side navigation bar */
+.side-nav {
+    background-color:#333;
+    color: #FFF;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 150px; /* Adjust the width as needed */
+    text-align: left; /* Align text to the left */
+    padding-top: 20px;
+}
+
+/* Style the side navigation links */
+.side-nav .nav-list {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.side-nav .nav-list li {
+    margin-bottom: 10px;
+}
+
+.side-nav .nav-list a {
+    text-decoration: none;
+    color: #FFF;
+    font-size: 1.2em;
+    transition: color 0.3s;
+}
+
+.side-nav .nav-list a:hover {
+    color: #0056b3;
+}
+
+/* Adjust the content area to make space for the side navigation */
+.about {
+    margin-left: 200px; /* Match the width of the side nav + some padding */
+}
+
+/* Add responsiveness for smaller screens */
+@media (max-width: 768px) {
+
+    /* Adjust the side nav for smaller screens */
+    .side-nav {
+        width: 100%; /* Occupy full width on smaller screens */
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    .side-nav .nav-list {
+        padding-left: 0;
+    }
+}
+
+header {
+    background-color: #e472f6;
+    color: #FFF;
+    padding: 20px;
+    margin-left: 150px;
+}
+
+h1 {
+    font-size: 36px;
+    margin: 0;
+    text-align: center;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+/* input[type="text"] {
+    width: 55%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+} */
+
+.input {
+    width: 55%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+.button {
+    background-color: #757b82; /* Background color */
+    color: #FFF; /* Text color */
+    padding: 10px 20px; /* Padding around the button text */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor style on hover */
+    font-size: 1.2em; /* Font size */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+}
+
+.button:hover {
+    background-color: #0056b3; /* Change background color on hover */
+    color: #FFF; /* Change text color on hover */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+
+tr{
+    border: 1.5px solid black;
+    margin: 0.5em;
+    text-align: center;
+    padding: 10px;
+    /* text-transform: capitalize; */
+}
+
+th, td{
+    
+    /* margin: 0.5em; */
+    padding: 10px;
+    text-align: center;
+    /* text-transform: capitalize; */
+}
+
+table, th, td {
+    border: 1.5px solid black;
+}
+
+td {
+    padding: 5px; /* Adjust the value to reduce padding */
+}
+
+
+/* table{
+    border-collapse: collapse;
+    margin: auto;
+    width: 70%;
+    padding: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+} */

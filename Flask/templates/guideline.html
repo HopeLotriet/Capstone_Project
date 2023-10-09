@@ -7,26 +7,26 @@
     <title>Molecular Property Prediction</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
     <script src="//unpkg.com/alpinejs" defer></script>
-    
+
 </head>
 
 <body>
     <nav class="side-nav">
         <ul class="nav-list">
             <li><a href="/">Home</a></li>
+            <li><a href="{{ url_for('guideline') }}">Guideline</a></li>
+            <li><a href="{{ url_for('search') }}">Search</a></li>
             <li><a href="{{ url_for('predict') }}">Predict</a></li>
             <li><a href="{{ url_for('classification') }}">Classification</a></li>
-            <!-- <li><a href="/search.html">Search</a></li>
-            <li><a href="/database.html">Database</a></li> -->
+            <li><a href="{{ url_for('database') }}">Database</a></li>
             <li><a href="{{ url_for('about') }}">About Us</a></li>
             <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
-            <li><a href="{{ url_for('guideline') }}">Guideline</a></li>
+
         </ul>
     </nav>
 
     <header>
-        <h1>DrugCheckMaster<img src="{{ url_for('static', filename='medicines.png') }}" alt="pills"
-                width="40"></h1>
+        <h1>DrugCheckMaster<img src="{{ url_for('static', filename='medicines.png') }}" alt="pills" width="40"></h1>
     </header>
 
     <div class="about">
@@ -36,7 +36,9 @@
             </div>
         </section>
 
-        <p>Lipinski's Rule of 5 is a guideline used in drug discovery to evaluate the drug-likeness of chemical compounds. According to this rule, a compound is likely to have good oral bioavailability if it meets the following criteria:</p>
+        <p>Lipinski's Rule of 5 is a guideline used in drug discovery to evaluate the drug-likeness of chemical
+            compounds. According to this rule, a compound is likely to have good oral bioavailability if it meets the
+            following criteria:</p>
 
         <div class="rule-list">
             <p><strong>1. Molecular Weight:</strong> Less than or equal to 500 daltons (Da).</p>
@@ -48,24 +50,31 @@
             <p><strong>7. Synthesizability Access Score (SAS):</strong> Score value criteria.</p>
         </div>
 
-        <p>To be considered drug-like, a compound should pass no more than one of these criteria. In other words, a drug-like compound should have:</p>
+        <p>To be considered drug-like, a compound should pass no more than one of these criteria. In other words, a
+            drug-like compound should have:</p>
 
         <div class="rule-list">
             <p><strong>0 or 1 violation(s) out of 7 criteria.</strong></p>
         </div>
-    
+
         <h2>Calculations:</h2>
         <p><strong>Molecular Weight (MW):</strong> Sum of the atomic weights of all atoms in the molecule.</p>
-        <p><strong>LogP:</strong> The logarithm of the partition coefficient between octanol and water, indicating the compound's lipophilicity.</p>
+        <p><strong>LogP:</strong> The logarithm of the partition coefficient between octanol and water, indicating the
+            compound's lipophilicity.</p>
         <p><strong>Hydrogen Bond Donors:</strong> Number of hydrogen atoms bound to nitrogen or oxygen.</p>
-        <p><strong>Hydrogen Bond Acceptors:</strong> Number of nitrogen or oxygen atoms or any sulfur atom bound to hydrogen.</p>
-        <p><strong>Total Polar Surface Area (TPSA):</strong> The surface area of polar atoms (usually oxygen and nitrogen) in the molecule.</p>
-        <p><strong>Rotatable Bonds:</strong> Bonds that allow free rotation around themselves, usually single bonds that are not part of a ring structure.</p>
-        <p><strong>Synthesizability Access Score (SAS):</strong> A score indicating the compound's ease of synthesis.</p>
-    
-        <p>Remember that Lipinski's Rule of 5 is a general guideline and there are exceptions. It's a useful tool in early-stage drug discovery to filter out compounds that might have poor oral bioavailability.</p>
-    
-    
+        <p><strong>Hydrogen Bond Acceptors:</strong> Number of nitrogen or oxygen atoms or any sulfur atom bound to
+            hydrogen.</p>
+        <p><strong>Total Polar Surface Area (TPSA):</strong> The surface area of polar atoms (usually oxygen and
+            nitrogen) in the molecule.</p>
+        <p><strong>Rotatable Bonds:</strong> Bonds that allow free rotation around themselves, usually single bonds that
+            are not part of a ring structure.</p>
+        <p><strong>Synthesizability Access Score (SAS):</strong> A score indicating the compound's ease of synthesis.
+        </p>
+
+        <p>Remember that Lipinski's Rule of 5 is a general guideline and there are exceptions. It's a useful tool in
+            early-stage drug discovery to filter out compounds that might have poor oral bioavailability.</p>
+
+
         <br>
         <br>
         <br>
@@ -78,17 +87,15 @@
         <br>
         <br>
         <br>
-        <br>
-        <br>
-        <br>
-        <br>
-    
+
 
     </div>
-        <footer>
-            <p>&copy; 2023 DrugCheckMaster</p>
-        </footer>
-    
+
+
+    <footer>
+        &copy; 2023 DrugCheckMaster
+    </footer>
+
 </body>
 
 </html>

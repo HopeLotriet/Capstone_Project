@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Molecular Property Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='search.css') }}">
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+</head>
+
+<body>
+
+    <nav class="side-nav">
+        <ul class="nav-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="{{ url_for('guideline') }}">Guideline</a></li>
+            <li><a href="{{ url_for('search') }}">Search</a></li>
+            <li><a href="{{ url_for('predict') }}">Predict</a></li>
+            <li><a href="{{ url_for('classification') }}">Classification</a></li>
+            <li><a href="{{ url_for('database') }}">Database</a></li>
+            <li><a href="{{ url_for('about') }}">About Us</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>DrugCheckMaster<img src="{{ url_for('static', filename='medicines.png') }}" alt="pills" width="40"></h1>
+    </header>
+
+    <main class="about">
+
+        <div>
+            <h2>Search</h2>
+        </div>
+
+        <!-- Text-Based Search Section -->
+        <section class="search-section">
+            <input class="input" type="text" x-model="textSearchQuery" x-on:input="searchText()"
+                placeholder="Search by name or formula">
+            <button class="button">Search</button>
+        </section>
+
+        <br>
+        <br>
+
+        <div>
+            <h2>Lipinski's Properties Calculator</h2>
+        </div>
+
+        <form id="lipinskiForm">
+            <label for="chemicalFormula">Enter Chemical Formula:</label>
+            <input type="text" id="chemicalFormula" placeholder="e.g., C6H12O6">
+            <br>
+            <p>Or</p>
+            <label for="molecularWeight">Enter Molecular Weight (g/mol):</label>
+            <input type="text" id="molecularWeight" placeholder="e.g., 180.15">
+            <br>
+            <br>
+            <button type="button" onclick="calculateProperties()">Calculate Properties</button>
+
+            <div id="result"></div>
+        </form>
+
+
+
+    </main>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <footer>
+        <p>&copy; 2023 DrugCheckMaster</p>
+    </footer>
+
+
+    <!-- Your HTML code remains unchanged, but update the JavaScript part -->
+    <script>
+        async function calculateProperties() {
+    const chemicalFormula = document.getElementById('chemicalFormula').value;
+    const molecularWeight = parseFloat(document.getElementById('molecularWeight').value);
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerText = ''; // Clear previous results
+
+    const data = {};
+    if (chemicalFormula) {
+        data.chemical_formula = chemicalFormula;
+    } else if (!isNaN(molecularWeight) && molecularWeight > 0) {
+        data.molecular_weight = molecularWeight;
+    } else {
+        resultDiv.innerText = 'Invalid input. Please enter a valid chemical formula or molecular weight.';
+        return;
+    }
+
+    try {
+        const response = await fetch('/calculate_properties', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.status === 200) {
+            const responseData = await response.json();
+            resultDiv.innerText = `Molecular Weight: ${responseData.molecular_weight} g/mol\nLogP: ${responseData.logP}\nHydrogen Bond Donors: ${responseData.hydrogen_bond_donors}\nHydrogen Bond Acceptors: ${responseData.hydrogen_bond_acceptors}\nTPSA: ${responseData.tpsa} Å²\nSAS Score: ${responseData.sas_score}\nNumber of Rotatable Bonds: ${responseData.num_rotatable_bonds}\n\nLipinski's Rule of Five Compliance: ${responseData.is_lipinski_compliant ? 'Yes' : 'No'}`;
+        } else {
+            resultDiv.innerText = 'Error occurred during calculation.';
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        resultDiv.innerText = 'Error occurred during calculation.';
+    }
+}
+    </script>
+
+
+</body>
+
+</html>

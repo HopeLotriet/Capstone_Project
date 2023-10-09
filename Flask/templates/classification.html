@@ -14,13 +14,13 @@
     <nav class="side-nav">
         <ul class="nav-list">
             <li><a href="/">Home</a></li>
+            <li><a href="{{ url_for('guideline') }}">Guideline</a></li>
+            <li><a href="{{ url_for('search') }}">Search</a></li>
             <li><a href="{{ url_for('predict') }}">Predict</a></li>
             <li><a href="{{ url_for('classification') }}">Classification</a></li>
-            <!-- <li><a href="/search.html">Search</a></li>
-            <li><a href="/database.html">Database</a></li> -->
+            <li><a href="{{ url_for('database') }}">Database</a></li>
             <li><a href="{{ url_for('about') }}">About Us</a></li>
             <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
-            <li><a href="{{ url_for('guideline') }}">Guideline</a></li>
         </ul>
     </nav>
 

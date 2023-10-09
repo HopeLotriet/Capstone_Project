@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\hopel\projects\Capstone_Group_3\Project\.api"
+VIRTUAL_ENV="C:\Users\hopel\projects\Capstone_Group_3\Flask\.api"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

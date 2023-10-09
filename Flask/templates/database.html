@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Molecular Property Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='database.css') }}">
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- <script src="app.js" defer></script> -->
+
+</head>
+
+<body>
+
+    <nav class="side-nav">
+        <ul class="nav-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="{{ url_for('guideline') }}">Guideline</a></li>
+            <li><a href="{{ url_for('search') }}">Search</a></li>
+            <li><a href="{{ url_for('predict') }}">Predict</a></li>
+            <li><a href="{{ url_for('classification') }}">Classification</a></li>
+            <li><a href="{{ url_for('database') }}">Database</a></li>
+            <li><a href="{{ url_for('about') }}">About Us</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>DrugCheckMaster<img src="{{ url_for('static', filename='medicines.png') }}" alt="pills" width="40"></h1>
+    </header>
+
+    <div class="about">
+
+        <section class="base">
+
+            <div>
+                <h2>Drug Database</h2>
+            </div>
+
+            <section class="box">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Formula</th>
+                            <th>HBD</th>
+                            <th>HBA</th>
+                            <th>Molecular Weight</th>
+                            <th>LogP</th>
+                            <th>TPSA</th>
+                            <th>Num of Rotatable Bonds</th>
+                            <th>SAS</th>
+                            <th>Passes Lipinski</th>
+                   
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for row in data %}
+                        <tr>
+                            {% for item in row %}
+                                <td>{{ item }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    
+                  
+                </table>
+                <br>
+                <br>
+
+            </section>
+
+
+        </section>
+
+    </div>
+
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>	
+       
+           
+            
+
+
+
+    <footer>
+        <p>&copy; 2023 DrugCheckMaster</p>
+    </footer>
+
+
+</body>
+
+</html>
