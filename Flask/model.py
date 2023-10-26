@@ -222,7 +222,27 @@ def database():
     except Exception as e:
         print(e)
         return render_template("database.html", data=None)
-
+    
+@app.route('/search', methods=['GET'])
+def search_database():
+    try:
+        # Get the search query from the request parameters
+        query = request.args.get('query')
+        
+        # Execute the SQL query with placeholders for partial matching in Name or Formula
+        cursor.execute("SELECT * FROM Compounds WHERE Name LIKE ? OR Formula LIKE ?", ('%' + query + '%', '%' + query + '%'))
+        
+        # Fetch the search results
+        search_results = cursor.fetchall()
+        
+        # Return search results as JSON with HTTP status 200 (OK)
+        return jsonify(search_results), 200
+    
+    except Exception as e:
+        # Handle errors and return an error response as JSON with HTTP status 500 (Internal Server Error)
+        error_message = str(e)  # Get the error message as a string
+        print("Error:", error_message)  # Log the error for debugging purposes
+        return jsonify(error="An error occurred while searching the database."), 500
 
 
 if __name__ == "__main__":

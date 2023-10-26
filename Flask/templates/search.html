@@ -7,6 +7,7 @@
     <title>Molecular Property Prediction</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='search.css') }}">
     <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </head>
 
@@ -29,17 +30,20 @@
         <h1>DrugCheckMaster<img src="{{ url_for('static', filename='medicines.png') }}" alt="pills" width="40"></h1>
     </header>
 
-    <main class="about">
+    <main x-data="predictApp" class="about">
 
         <div>
             <h2>Search</h2>
         </div>
 
-        <!-- Text-Based Search Section -->
+        <br>
+        <br>
+
         <section class="search-section">
-            <input class="input" type="text" x-model="textSearchQuery" x-on:input="searchText()"
-                placeholder="Search by name or formula">
-            <button class="button">Search</button>
+            <input class="input" type="text" id="searchQuery" placeholder="Search by name or formula" x-model="searchQuery">
+            <button class="button" @click="searchDatabase()">Search</button>
+            
+            <div id="searchResults"></div>
         </section>
 
         <br>
@@ -51,14 +55,14 @@
 
         <form id="lipinskiForm">
             <label for="chemicalFormula">Enter Chemical Formula:</label>
-            <input type="text" id="chemicalFormula" placeholder="e.g., C6H12O6">
+            <input class="input" type="text" id="chemicalFormula" placeholder="e.g., C6H12O6" x-model="chemicalFormula">
             <br>
             <p>Or</p>
             <label for="molecularWeight">Enter Molecular Weight (g/mol):</label>
-            <input type="text" id="molecularWeight" placeholder="e.g., 180.15">
+            <input class="input" type="text" id="molecularWeight" placeholder="e.g., 180.15" x-model="molecularWeight">
             <br>
             <br>
-            <button type="button" onclick="calculateProperties()">Calculate Properties</button>
+            <button type="button" @click="calculateProperties()">Calculate Properties</button>
 
             <div id="result"></div>
         </form>
@@ -82,7 +86,7 @@
 
 
     <!-- Your HTML code remains unchanged, but update the JavaScript part -->
-    <script>
+    <!-- <script>
         async function calculateProperties() {
     const chemicalFormula = document.getElementById('chemicalFormula').value;
     const molecularWeight = parseFloat(document.getElementById('molecularWeight').value);
@@ -119,7 +123,9 @@
         resultDiv.innerText = 'Error occurred during calculation.';
     }
 }
-    </script>
+
+
+    </script> -->
 
 
 </body>
