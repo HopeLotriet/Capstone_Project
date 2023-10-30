@@ -7,36 +7,12 @@ function init() {
                 molecularWeight: '',
                 searchResults: [],
                 predictionResult: null,
-                async predictProperties() {
-                    try {
-                        const response = await fetch('/predict_lipinski', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                Name: this.compoundName,
-                                // Add other input fields here if needed
-                            })
-                        });
 
-                        const data = await response.json();
-                        this.predictionResult = data; // Update the reactive variable
-                    } catch (error) {
-                        console.error('Error:', error);
-                        // Handle error
-                    }
-                },
                 async calculateProperties() {
-                    const data = {};
-                    if (this.chemicalFormula) {
-                        data.chemical_formula = this.chemicalFormula;
-                    } else if (!isNaN(this.molecularWeight) && this.molecularWeight > 0) {
-                        data.molecular_weight = this.molecularWeight;
-                    } else {
-                        this.resultDiv = 'Invalid input. Please enter a valid chemical formula or molecular weight.';
-                        return;
-                    }
+                    const data = {
+                        chemical_formula: this.chemicalFormula,
+                        molecular_weight: this.molecularWeight
+                    };
 
                     try {
                         const response = await fetch('/calculate_properties', {
@@ -44,13 +20,14 @@ function init() {
                             headers: {
                                 'Content-Type': 'application/json'
                             },
-                            body: JSON.stringify(data)
+                            body: JSON.stringify(data) // Send data as JSON
                         });
-
-                        if (response.status === 200) {
-                            const responseData = await response.json();
-                            this.resultDiv = `Molecular Weight: ${responseData.molecular_weight} g/mol\nLogP: ${responseData.logP}\nHydrogen Bond Donors: ${responseData.hydrogen_bond_donors}\nHydrogen Bond Acceptors: ${responseData.hydrogen_bond_acceptors}\nTPSA: ${responseData.tpsa} Å²\nSAS Score: ${responseData.sas_score}\nNumber of Rotatable Bonds: ${responseData.num_rotatable_bonds}\n\nLipinski's Rule of Five Compliance: ${responseData.is_lipinski_compliant ? 'Yes' : 'No'}`;
+                        console.log(response);
+                        if (response.ok) {
+                            const responseData = await response.json(); // Parse the response as JSON
+                            this.resultDiv = `Molecular Weight: ${responseData.molecular_weight} g/mol\nLogP: ${responseData.logP}\n...`; // Update UI with the response data
                         } else {
+                            console.error('Error occurred during calculation:', response.statusText);
                             this.resultDiv = 'Error occurred during calculation.';
                         }
                     } catch (error) {
@@ -58,32 +35,51 @@ function init() {
                         this.resultDiv = 'Error occurred during calculation.';
                     }
                 },
+
                 async searchDatabase() {
                     this.searchResults = []; // Clear previous search results
 
-                    try {
-                        const response = await fetch(`/search?query=${this.searchQuery}`, {
-                            method: 'GET',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            }
-                        });
+                    axios.post(`/search?query=${this.searchQuery}`).then(res=>{
+                        console.log(res.data);
+                        this.searchResults = res.data;
 
-                        if (response.status === 200) {
-                            const searchData = await response.json();
-                            if (searchData.length > 0) {
-                                // Render search results in the searchResults array
-                                this.searchResults = searchData;
-                            } else {
-                                this.searchResults.push({ id: null, Name: 'No results found.', Formula: null });
-                            }
-                        } else {
-                            this.searchResults.push({ id: null, Name: 'Error occurred during search.', Formula: null });
-                        }
-                    } catch (error) {
-                        console.error('Error:', error);
-                        this.searchResults.push({ id: null, Name: 'Error occurred during search.', Formula: null });
-                    }
+                         // Toggle visibility of the table based on search results
+                         let searchResults = document.getElementById('searchResults');
+                         searchResults.style.display = this.searchResults.length > 0 ? 'table' : 'none';
+                     }).catch(error => {
+                         console.error('Error occurred during search:', error);
+                         this.searchResults.push({ id: null, Name: 'Error occurred during search.', Formula: null });
+ 
+                         // Hide the table if there are no search results
+                         let searchResults = document.getElementById('searchResults');
+                         searchResults.style.display = 'none';
+                    });
+                    // try {
+                    //     const response = await fetch(`/search?query=${this.searchQuery}`, {
+                    //         method: 'POST',
+                    //         headers: {
+                    //             'Content-Type': 'application/json'
+                    //         },
+                    //         body: {
+                    //             query: this.searchQuery
+                    //         }
+                    //     });
+
+                    //     if (response.ok) {
+                    //         const searchData = await response.json(); // Parse the response as JSON
+                    //         if (searchData.length > 0) {
+                    //             this.searchResults = searchData;
+                    //         } else {
+                    //             this.searchResults.push({ id: null, Name: 'No results found.', Formula: null });
+                    //         }
+                    //     } else {
+                    //         console.error('Error occurred during search:', response.statusText);
+                    //         this.searchResults.push({ id: null, Name: 'Error occurred during search.', Formula: null });
+                    //     }
+                    // } catch (error) {
+                    //     console.error('Error:', error);
+                    //     this.searchResults.push({ id: null, Name: 'Error occurred during search.', Formula: null });
+                    // }
                 }
             };
         });

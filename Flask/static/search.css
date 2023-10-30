@@ -7,7 +7,7 @@ body {
 }
 
 .about {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 20px;
     padding: 20px;
     background-color: white; 
@@ -140,4 +140,21 @@ footer {
 
 .img {
     border: 2px solid;
+}
+
+th, td{
+    
+    /* margin: 0.5em; */
+    padding: 10px;
+    text-align: center;
+    /* text-transform: capitalize; */
+}
+
+table, th, td {
+    border: 1.5px solid black;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 5px; /* Adjust the value to reduce padding */
 }

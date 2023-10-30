@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Molecular Property Prediction</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='search.css') }}">
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
@@ -40,10 +41,56 @@
         <br>
 
         <section class="search-section">
-            <input class="input" type="text" id="searchQuery" placeholder="Search by name or formula" x-model="searchQuery">
+            <input class="input" type="text" id="searchQuery" placeholder="Search by name or formula"
+                x-model="searchQuery">
             <button class="button" @click="searchDatabase()">Search</button>
-            
-            <div id="searchResults"></div>
+
+
+
+            <div id="searchResults" style="display: none;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Formula</th>
+                            <th>HBD</th>
+                            <th>HBA</th>
+                            <th>Molecular Weight</th>
+                            <th>LogP</th>
+                            <th>TPSA</th>
+                            <th>Num Rotatable Bonds</th>
+                            <th>SAS</th>
+                            <th>Passes Lipinski</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Loop through the data and populate the table rows -->
+                        <template x-for="row in searchResults">
+                            <tr>
+                                <td x-text="row[0]"></td>
+                                <td x-text="row[1]"></td>
+                                <td x-text="row[2]"></td>
+                                <td x-text="row[3]"></td>
+                                <td x-text="row[4]"></td>
+                                <td x-text="row[5].toFixed(2)"></td>
+                                <td x-text="row[6].toFixed(2)"></td>
+                                <td x-text="row[7].toFixed(2)"></td>
+                                <td x-text="row[8]"></td>
+                                <td x-text="row[9]"></td>
+                                <td x-text="row[10]"></td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <!-- <div id="searchResults">
+                <template x-for="data in searchResults">
+                    <p x-text="data"></p>
+                </template>
+            </div> -->
         </section>
 
         <br>
@@ -56,18 +103,15 @@
         <form id="lipinskiForm">
             <label for="chemicalFormula">Enter Chemical Formula:</label>
             <input class="input" type="text" id="chemicalFormula" placeholder="e.g., C6H12O6" x-model="chemicalFormula">
-            <br>
             <p>Or</p>
             <label for="molecularWeight">Enter Molecular Weight (g/mol):</label>
             <input class="input" type="text" id="molecularWeight" placeholder="e.g., 180.15" x-model="molecularWeight">
             <br>
             <br>
-            <button type="button" @click="calculateProperties()">Calculate Properties</button>
+            <button class="button" type="button" @click="calculateProperties()">Calculate Properties</button>
 
             <div id="result"></div>
         </form>
-
-
 
     </main>
 

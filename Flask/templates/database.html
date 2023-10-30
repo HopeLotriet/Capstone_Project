@@ -40,6 +40,7 @@
             </div>
 
             <section class="box">
+               
                 <table>
                     <thead>
                         <tr>
@@ -54,7 +55,7 @@
                             <th>Num of Rotatable Bonds</th>
                             <th>SAS</th>
                             <th>Passes Lipinski</th>
-                   
+
                         </tr>
                     </thead>
 
@@ -62,16 +63,12 @@
                         {% for row in data %}
                         <tr>
                             {% for item in row %}
-                                <td>{{ item }}</td>
+                            <td>{{ item }}</td>
                             {% endfor %}
                         </tr>
-                    {% endfor %}
+                        {% endfor %}
                     </tbody>
-                    
-                  
                 </table>
-                <br>
-                <br>
 
             </section>
 
@@ -79,23 +76,6 @@
         </section>
 
     </div>
-
-
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>	
-       
-           
-            
-
 
 
     <footer>
