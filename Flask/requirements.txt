@@ -1,8 +1,8 @@
 blinker==1.6.2
 click==8.1.7
 colorama==0.4.6
-CORS
 Flask==2.2.5
+Flask-CORS==3.0.10
 gunicorn==21.2.0
 itsdangerous==2.1.2
 Jinja2==3.1.2
