@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify, g
+# import requests
 from flask_cors import CORS
 import joblib
 import os
@@ -168,14 +169,15 @@ def classify_drug():
 # logging.basicConfig(level=logging.ERROR)  # Set the logging level as needed
 
 
+import requests
+from flask import jsonify, request
+
 @app.route('/calculate_properties', methods=['POST'])
 def calculate_properties():
     result = {}
 
     try:
-        print('Calculating...')
         data = request.get_json()
-        print(data)
         chemical_formula = data.get('chemical_formula')
         molecular_weight = data.get('molecular_weight')
 
@@ -185,28 +187,19 @@ def calculate_properties():
             return jsonify(result), 400
 
         if chemical_formula:
-            mol = MolFromSmiles(chemical_formula)
+            # Convert chemical formula to SMILES using CIR
+            smiles = formula_to_smiles(chemical_formula)
+            if smiles is None:
+                result['error'] = f'Invalid chemical formula: {chemical_formula}'
+                return jsonify(result), 400
+
+            mol = MolFromSmiles(smiles)
         else:
             mol = MolFromSmiles('C')
             mol.SetProp('_MolWt', molecular_weight)
 
-        if mol is None:
-            result['error'] = 'Invalid input. Please enter a valid chemical formula or molecular weight.'
-            return jsonify(result), 400
-
-        logp = Crippen.MolLogP(mol)
-        hbd = Chem.rdMolDescriptors.CalcNumHBD(mol)
-        hba = Chem.rdMolDescriptors.CalcNumHBA(mol)
-        tpsa = Chem.rdMolDescriptors.CalcTPSA(mol)
-        sas_score = Chem.CalcSAS(mol)
-        num_rotatable_bonds = Chem.CalcNumRotatableBonds(mol)
-
-        is_lipinski_compliant = all([
-            Lipinski.NumHDonors(mol) <= 5,
-            Lipinski.NumHAcceptors(mol) <= 10,
-            logp <= 5,
-            mol.GetNumHeavyAtoms() <= 500
-        ])
+        # Rest of your code for property calculations...
+        # (logp, hbd, hba, tpsa, sas_score, num_rotatable_bonds, is_lipinski_compliant)
 
         result = {
             'molecular_weight': mol.GetProp('_MolWt'),
@@ -220,15 +213,36 @@ def calculate_properties():
         }
 
     except Exception as e:
-        logging.error(str(e))  # Log the specific error message
-
-        result['error'] = 'Invalid SMILES notation. Please enter a valid chemical formula.'
+        # Handle exceptions appropriately
+        result['error'] = 'Error occurred during calculation: ' + str(e)
         return jsonify(result), 400
 
-    # Return the calculated properties or an error message if applicable
     return jsonify(result)
 
+def formula_to_smiles(formula):
+    url = f"https://cactus.nci.nih.gov/chemical/structure/{formula}/smiles"
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.text.strip('"')
+    else:
+        return None
+
+
 #....
+
+def format_data(data):
+    formatted_data = []
+    for row in data:
+        formatted_row = []
+        for item in row:
+            if isinstance(item, (int, float)):
+                formatted_row.append(round(item, 2))
+            else:
+                formatted_row.append(item)
+        formatted_data.append(formatted_row)
+    return formatted_data
+
+
 @app.route("/database")
 def database():
     
@@ -239,10 +253,11 @@ def database():
         data = cursor.fetchall()
         conn.close()  # Close the connection after fetching data
 
-        formatted_data = [(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10]) for row in data]
+        # formatted_data = [(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10]) for row in data]
     
     # Pass the formatted data to the template
-        print(formatted_data)
+        # print(formatted_data)
+        formatted_data = format_data(data)
         return render_template("database.html", data=formatted_data)
         # return render_template("database.html", data=data)
 #     except Exception as e:

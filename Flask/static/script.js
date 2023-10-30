@@ -8,33 +8,34 @@ function init() {
                 searchResults: [],
                 predictionResult: null,
 
-                async calculateProperties() {
-                    const data = {
-                        chemical_formula: this.chemicalFormula,
-                        molecular_weight: this.molecularWeight
-                    };
+             
+async calculateProperties() {
+    const data = {
+        chemical_formula: this.chemicalFormula,
+        molecular_weight: this.molecularWeight
+    };
 
-                    try {
-                        const response = await fetch('/calculate_properties', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(data) // Send data as JSON
-                        });
-                        console.log(response);
-                        if (response.ok) {
-                            const responseData = await response.json(); // Parse the response as JSON
-                            this.resultDiv = `Molecular Weight: ${responseData.molecular_weight} g/mol\nLogP: ${responseData.logP}\n...`; // Update UI with the response data
-                        } else {
-                            console.error('Error occurred during calculation:', response.statusText);
-                            this.resultDiv = 'Error occurred during calculation.';
-                        }
-                    } catch (error) {
-                        console.error('Error:', error);
-                        this.resultDiv = 'Error occurred during calculation.';
-                    }
-                },
+    try {
+        const response = await axios.post('/calculate_properties', data, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        console.log(response);
+        if (response.status === 200) {
+            const responseData = response.data;
+            this.resultDiv = `Molecular Weight: ${responseData.molecular_weight} g/mol\nLogP: ${responseData.logP}\n...`; // Update UI with the response data
+        } else {
+            console.error('Error occurred during calculation:', response.statusText);
+            this.resultDiv = 'Error occurred during calculation.';
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        this.resultDiv = 'Error occurred during calculation.';
+    }
+},
+
 
                 async searchDatabase() {
                     this.searchResults = []; // Clear previous search results

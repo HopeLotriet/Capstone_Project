@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='database.css') }}">
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <!-- <script src="app.js" defer></script> -->
+    <!-- <script src="{{ url_for('static', filename='pagination.js') }}"></script> -->
 
 </head>
 
@@ -40,8 +40,56 @@
             </div>
 
             <section class="box">
-               
-                <table>
+
+                <!-- <table>
+                    Table Headers -->
+                    <!-- <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Formula</th>
+                            <th>HBD</th>
+                            <th>HBA</th>
+                            <th>Molecular Weight</th>
+                            <th>LogP</th>
+                            <th>TPSA</th>
+                            <th>Num of Rotatable Bonds</th>
+                            <th>SAS</th>
+                            <th>Passes Lipinski</th>
+                        </tr>
+                    </thead> -->
+
+                    <!-- Table Body with Pagination -->
+                    <!-- <tbody x-data="pagination()">
+                        <template x-for="row in paginatedData" :key="row.ID">
+                            <tr>
+                                <td x-text="row.ID"></td>
+                                <td x-text="row.Name"></td>
+                                <td x-text="row.Formula"></td>
+                                <td x-text="row.HBD"></td>
+                                <td x-text="row.HBA"></td>
+                                <td x-text="row.molecularWeight"></td>
+                                <td x-text="row.LogP"></td>
+                                <td x-text="row.TPSA"></td>
+                                <td x-text="row.NumRotatableBonds"></td>
+                                <td x-text="row.SAS"></td>
+                                <td x-text="row.PassesLipinski"></td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table> -->
+
+          
+                    <!-- Pagination controls -->
+                    <!-- <button x-on:click="prevPage()" :disabled="currentPage === 1">Previous</button>
+                    <button x-on:click="nextPage()" :disabled="currentPage === totalPages">Next</button>
+                </div>
+
+            </section> -->
+   <!-- Pagination Controls -->
+
+
+            <table>
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -81,6 +129,44 @@
     <footer>
         <p>&copy; 2023 DrugCheckMaster</p>
     </footer>
+
+    <!-- <script>
+        const jsonData = {{ data | tojson | safe }};
+    </script> -->
+    
+    <!-- <script>
+        function pagination() {
+            return {
+                currentPage: 1,
+                itemsPerPage: 100,
+                data: jsonData, // Use the JSON data fetched from the server
+    
+                get paginatedData() {
+                    const start = (this.currentPage - 1) * this.itemsPerPage;
+                    const end = start + this.itemsPerPage;
+                    return this.data.slice(start, end);
+                },
+    
+                get totalPages() {
+                    return Math.ceil(this.data.length / this.itemsPerPage);
+                },
+    
+                prevPage() {
+                    if (this.currentPage > 1) {
+                        this.currentPage--;
+                    }
+                },
+    
+                nextPage() {
+                    if (this.currentPage < this.totalPages) {
+                        this.currentPage++;
+                    }
+                }
+            };
+        }
+    </script> -->
+    
+    
 
 
 </body>
